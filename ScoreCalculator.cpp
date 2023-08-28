@@ -21,6 +21,6 @@ double ScoreCalculator::getScore(std::string color) {
             }
         }
     }
-    std::cout<<"final score is "<<score<<std::endl;
+    std::cout<<score<<std::endl;
     return score;
 }
