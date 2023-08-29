@@ -53,10 +53,10 @@ void ChessBoard::checkThreatsFromRook(int x, int y, std::string color) {
         while (true) {
             nx += dx[i];
             ny += dy[i];
-            if (!isWithinBoard(nx, ny) || (board[nx][ny].getColor() == color && board[nx][ny].getType() != "--")) {
+            if (!isWithinBoard(nx, ny) || (board[nx][ny].getColor() == color && board[nx][ny].getType() != "-")) {
                 break;
             }
-            if (board[nx][ny].getType() != "--") {
+            if (board[nx][ny].getType() != "-") {
                 if (board[nx][ny].getColor() != color) {
                     board[nx][ny].setThreatened(true);
                 }
@@ -76,10 +76,10 @@ void ChessBoard::checkThreatsFromBishop(int x, int y, std::string color) {
         while (true) {
             nx += dx[i];
             ny += dy[i];
-            if (!isWithinBoard(nx, ny) || (board[nx][ny].getColor() == color && board[nx][ny].getType() != "--")) {
+            if (!isWithinBoard(nx, ny) || (board[nx][ny].getColor() == color && board[nx][ny].getType() != "-")) {
                 break;
             }
-            if (board[nx][ny].getType() != "--") {
+            if (board[nx][ny].getType() != "-") {
                 if (board[nx][ny].getColor() != color) {
                     board[nx][ny].setThreatened(true);
                 }
@@ -93,11 +93,11 @@ void ChessBoard::checkThreatsFromPawn(int x, int y, std::string color) {
     int direction = (color == "b") ? -1 : 1; // White pawns move up, black pawns move down
 
     // Diagonal left and right
-    if (isWithinBoard(x + direction, y - 1) && board[x + direction][y - 1].getColor() != color && board[x + direction][y - 1].getType() != "--") {
+    if (isWithinBoard(x + direction, y - 1) && board[x + direction][y - 1].getColor() != color && board[x + direction][y - 1].getType() != "-") {
         board[x + direction][y - 1].setThreatened(true);
     }
 
-    if (isWithinBoard(x + direction, y + 1) && board[x + direction][y + 1].getColor() != color && board[x + direction][y + 1].getType() != "--") {
+    if (isWithinBoard(x + direction, y + 1) && board[x + direction][y + 1].getColor() != color && board[x + direction][y + 1].getType() != "-") {
         board[x + direction][y + 1].setThreatened(true);
     }
 }
@@ -109,7 +109,7 @@ void ChessBoard::checkThreatsFromKing(int x, int y, std::string color) {
 
     for (int i = 0; i < 8; i++) {
         int nx = x + dx[i], ny = y + dy[i];
-        if (isWithinBoard(nx, ny) && board[nx][ny].getColor() != color && board[nx][ny].getType() != "--") {
+        if (isWithinBoard(nx, ny) && board[nx][ny].getColor() != color && board[nx][ny].getType() != "-") {
             board[nx][ny].setThreatened(true);
         }
     }
@@ -128,7 +128,7 @@ void ChessBoard::checkThreatsFromKnight(int x, int y, std::string color) {
 
     for (int i = 0; i < 8; i++) {
         int nx = x + dx[i], ny = y + dy[i];
-        if (isWithinBoard(nx, ny) && board[nx][ny].getColor() != color && board[nx][ny].getType() != "--") {
+        if (isWithinBoard(nx, ny) && board[nx][ny].getColor() != color && board[nx][ny].getType() != "-") {
             board[nx][ny].setThreatened(true);
         }
     }
